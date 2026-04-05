@@ -12,6 +12,7 @@ export default function TeamPage() {
     {
       name: "정연우 (William Chung)",
       role: "Founder & CEO",
+      image: "/images/Will.jpeg", // <--- 윌리엄 대표님 사진 경로 추가 완료!
       quote: "답을 가르치기보다 생각하는 법을 고민합니다.",
       details: [
         "Princeton University Computer Science",
@@ -52,7 +53,7 @@ export default function TeamPage() {
       <GlobalHeader />
 
       <main className="max-w-6xl mx-auto px-6 pt-40">
-        <motion.div 
+        <motion.div
           initial="hidden"
           animate="visible"
           variants={fadeInUp}
@@ -62,14 +63,14 @@ export default function TeamPage() {
             About Team
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-800 leading-[1.3]">
-            아이들의 가능성을 믿는 <br className="hidden md:block"/>
+            아이들의 가능성을 믿는 <br className="hidden md:block" />
             전문가들이 만듭니다
           </h1>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {teamMembers.map((member, i) => (
-            <motion.div 
+            <motion.div
               key={member.name}
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
@@ -81,7 +82,7 @@ export default function TeamPage() {
                 {member.image ? (
                   <Image src={member.image} alt={member.name} fill className="object-cover" sizes="128px" />
                 ) : (
-                  <span className="text-slate-300 font-medium text-sm">Image<br/>Placeholder</span>
+                  <span className="text-slate-300 font-medium text-sm">Image<br />Placeholder</span>
                 )}
               </div>
               <h3 className="text-2xl font-bold text-slate-800 mb-2">{member.name}</h3>

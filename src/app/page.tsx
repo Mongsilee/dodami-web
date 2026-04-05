@@ -106,6 +106,7 @@ export default function Home() {
           <span className="font-extrabold text-slate-700">1:1 AI 튜터 도담이</span>입니다.
         </p>
 
+        {/* Action Button: 클릭 가능한 진짜 버튼이므로 호버 유지 */}
         <button
           onClick={openModal}
           className="group relative overflow-hidden rounded-[32px] bg-[#FF7B7B] px-10 py-5 text-xl font-bold text-white shadow-lg shadow-[#FF7B7B]/30 transition-all duration-300 hover:scale-105 hover:-translate-y-1 active:scale-95 hover:shadow-xl hover:shadow-[#FF7B7B]/40 focus:outline-none flex items-center gap-3"
@@ -131,6 +132,7 @@ export default function Home() {
           <p className="mt-4 text-xl text-slate-600 font-medium">아이와 함께 이야기를 나눌 다정한 튜터를 만나보세요!</p>
         </motion.div>
 
+        {/* Mascot Cards: 상호작용(클릭)이 가능하므로 호버 애니메이션 유지 */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full mb-16">
           {MASCOTS.map((mascot) => (
             <motion.div
@@ -177,11 +179,12 @@ export default function Home() {
               <div className="absolute -top-10 -left-10 w-40 h-40 bg-[#FFF8F0] rounded-full blur-3xl opacity-50" />
               <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-[#F0F4FF] rounded-full blur-3xl opacity-50" />
 
-              <div className="relative mb-8 mt-4">
-                <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-64 bg-slate-800 text-white p-4 rounded-2xl rounded-bl-none font-bold text-lg shadow-lg">
+              {/* 말풍선과 캐릭터 레이아웃 개선: 유연한 폭과 안정적인 여백 적용 */}
+              <div className="relative mb-10 mt-2 flex flex-col items-center z-10">
+                <div className="bg-slate-800 text-white px-8 py-5 rounded-[32px] rounded-br-[8px] font-bold text-lg md:text-xl shadow-xl mb-6 max-w-sm w-fit relative">
                   "안녕! 나는 {selectedMascot.name}야. <br />나랑 같이 생각 놀이 하러 갈까?"
                 </div>
-                <div className="w-48 h-48 relative mt-12 mx-auto">
+                <div className="w-48 h-48 md:w-56 md:h-56 relative mx-auto">
                   <Image
                     src={selectedMascot.image}
                     alt={selectedMascot.name}
@@ -193,7 +196,8 @@ export default function Home() {
                 </div>
               </div>
 
-              <Link href={`/demo?character=${selectedMascot.name}`}>
+              {/* Action Button: 클릭 가능한 진짜 버튼이므로 호버 유지 */}
+              <Link href={`/demo?character=${selectedMascot.name}`} className="z-10">
                 <button className="group relative overflow-hidden rounded-full bg-gradient-to-r from-[#5BA4E6] to-[#4589C7] px-10 py-5 text-xl font-bold text-white shadow-lg shadow-[#5BA4E6]/30 transition-all duration-300 hover:scale-105 hover:-translate-y-1 active:scale-95 hover:shadow-xl focus:outline-none flex items-center gap-2">
                   <Sparkles className="w-5 h-5" />
                   {selectedMascot.name}와 대화 시작하기
@@ -220,9 +224,9 @@ export default function Home() {
           <p className="mt-4 text-xl text-slate-600 font-medium">건강하게 자라나는 우리 아이의 생각 근육</p>
         </motion.div>
 
+        {/* 정보성 카드이므로 불필요한 hover 트랜지션(이동/크기변환) 모두 제거 */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-
-          <motion.div variants={fadeInUpAny} className="p-8 rounded-[32px] transition-all duration-300 hover:-translate-y-2 hover:shadow-lg bg-white/80 backdrop-blur-md border border-white/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+          <motion.div variants={fadeInUpAny} className="p-8 rounded-[32px] bg-white/80 backdrop-blur-md border border-white/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
             <div className="w-14 h-14 bg-blue-100 text-blue-500 rounded-2xl flex items-center justify-center mb-6">
               <Droplet className="w-7 h-7" />
             </div>
@@ -232,7 +236,7 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <motion.div variants={fadeInUpAny} className="p-8 rounded-[32px] transition-all duration-300 hover:-translate-y-2 hover:shadow-lg bg-white/80 backdrop-blur-md border border-white/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+          <motion.div variants={fadeInUpAny} className="p-8 rounded-[32px] bg-white/80 backdrop-blur-md border border-white/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
             <div className="w-14 h-14 bg-yellow-100 text-yellow-500 rounded-2xl flex items-center justify-center mb-6">
               <Sun className="w-7 h-7" />
             </div>
@@ -242,7 +246,7 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <motion.div variants={fadeInUpAny} className="p-8 rounded-[32px] transition-all duration-300 hover:-translate-y-2 hover:shadow-lg bg-white/80 backdrop-blur-md border border-white/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+          <motion.div variants={fadeInUpAny} className="p-8 rounded-[32px] bg-white/80 backdrop-blur-md border border-white/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
             <div className="w-14 h-14 bg-teal-100 text-teal-500 rounded-2xl flex items-center justify-center mb-6">
               <Wind className="w-7 h-7" />
             </div>
@@ -252,7 +256,7 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <motion.div variants={fadeInUpAny} className="p-8 rounded-[32px] transition-all duration-300 hover:-translate-y-2 hover:shadow-lg bg-white/80 backdrop-blur-md border border-white/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+          <motion.div variants={fadeInUpAny} className="p-8 rounded-[32px] bg-white/80 backdrop-blur-md border border-white/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
             <div className="w-14 h-14 bg-emerald-100 text-emerald-500 rounded-2xl flex items-center justify-center mb-6">
               <Sprout className="w-7 h-7" />
             </div>
@@ -261,7 +265,6 @@ export default function Home() {
               새롭게 배운 개념이 단단히 뿌리내릴 수 있도록, 대화 속에서 <span className="text-emerald-600 font-bold">자연스럽게 반복</span>합니다.
             </p>
           </motion.div>
-
         </div>
       </motion.section>
 
@@ -279,8 +282,9 @@ export default function Home() {
           </h2>
         </motion.div>
 
+        {/* 정보성 카드이므로 hover시 이동 효과 제거 */}
         <div className="flex flex-col gap-6">
-          <motion.div variants={fadeInUpAny} className="bg-white/80 backdrop-blur-md p-6 md:p-8 rounded-[32px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white/50 flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-12 relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+          <motion.div variants={fadeInUpAny} className="bg-white/80 backdrop-blur-md p-6 md:p-8 rounded-[32px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white/50 flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-12 relative overflow-hidden">
             <div className="absolute left-0 top-0 h-full w-2 bg-slate-200" />
             <div className="flex-shrink-0 text-left w-full md:w-32">
               <span className="bg-slate-100 text-slate-500 font-bold px-4 py-2 rounded-xl text-lg">학원</span>
@@ -292,7 +296,7 @@ export default function Home() {
             </div>
           </motion.div>
 
-          <motion.div variants={fadeInUpAny} className="bg-white/80 backdrop-blur-md p-6 md:p-8 rounded-[32px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-[#FF0000]/10 flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-12 relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+          <motion.div variants={fadeInUpAny} className="bg-white/80 backdrop-blur-md p-6 md:p-8 rounded-[32px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-[#FF0000]/10 flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-12 relative overflow-hidden">
             <div className="absolute left-0 top-0 h-full w-2 bg-[#FF0000]/20" />
             <div className="flex-shrink-0 text-left w-full md:w-32">
               <span className="bg-[#FF0000]/10 text-[#FF0000] font-bold px-4 py-2 rounded-xl text-lg">유튜브</span>
@@ -304,7 +308,7 @@ export default function Home() {
             </div>
           </motion.div>
 
-          <motion.div variants={fadeInUpAny} className="bg-white/80 backdrop-blur-md p-6 md:p-8 rounded-[32px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-[#10A37F]/10 flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-12 relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+          <motion.div variants={fadeInUpAny} className="bg-white/80 backdrop-blur-md p-6 md:p-8 rounded-[32px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-[#10A37F]/10 flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-12 relative overflow-hidden">
             <div className="absolute left-0 top-0 h-full w-2 bg-[#10A37F]/20" />
             <div className="flex-shrink-0 text-left w-full md:w-32">
               <span className="bg-[#10A37F]/10 text-[#10A37F] font-bold px-4 py-2 rounded-xl text-lg">ChatGPT</span>
@@ -329,7 +333,7 @@ export default function Home() {
         <div className="bg-white/60 backdrop-blur-xl p-10 md:p-14 rounded-[40px] border border-white/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
           <h2 className="text-3xl font-extrabold text-slate-800 mb-10 text-center tracking-tight">이런 부모님께 강력하게 추천합니다!</h2>
           <ul className="space-y-6">
-            <li className="flex items-start gap-4 bg-white/80 backdrop-blur-md border border-white/50 p-6 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-1">
+            <li className="flex items-start gap-4 bg-white/80 backdrop-blur-md border border-white/50 p-6 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
               <div className="bg-[#6BCB77]/20 p-2 rounded-full mt-1 flex-shrink-0">
                 <CheckCircle className="w-6 h-6 text-[#10A37F]" />
               </div>
@@ -337,7 +341,7 @@ export default function Home() {
                 "학원 보내는데 진짜 이해하고 넘어가는지 모르겠어요"
               </p>
             </li>
-            <li className="flex items-start gap-4 bg-white/80 backdrop-blur-md border border-white/50 p-6 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-1">
+            <li className="flex items-start gap-4 bg-white/80 backdrop-blur-md border border-white/50 p-6 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
               <div className="bg-[#6BCB77]/20 p-2 rounded-full mt-1 flex-shrink-0">
                 <CheckCircle className="w-6 h-6 text-[#10A37F]" />
               </div>
@@ -345,7 +349,7 @@ export default function Home() {
                 "유튜브 시청 시간을 줄이고, 의미 있는 대화 시간을 늘리고 싶어요"
               </p>
             </li>
-            <li className="flex items-start gap-4 bg-white/80 backdrop-blur-md border border-white/50 p-6 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-1">
+            <li className="flex items-start gap-4 bg-white/80 backdrop-blur-md border border-white/50 p-6 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
               <div className="bg-[#6BCB77]/20 p-2 rounded-full mt-1 flex-shrink-0">
                 <CheckCircle className="w-6 h-6 text-[#10A37F]" />
               </div>
@@ -372,8 +376,8 @@ export default function Home() {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-
-          <motion.div variants={fadeInUpAny} className="bg-white/80 backdrop-blur-md p-10 md:p-14 rounded-[40px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white/50 hover:-translate-y-2 hover:shadow-xl transition-all duration-300">
+          {/* 정보성 카드이므로 hover시 이동 효과 제거 */}
+          <motion.div variants={fadeInUpAny} className="bg-white/80 backdrop-blur-md p-10 md:p-14 rounded-[40px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white/50">
             <div className="w-20 h-20 rounded-[28px] bg-[#FF7B7B]/10 text-[#FF7B7B] flex items-center justify-center mb-8">
               <Smile className="w-10 h-10" />
             </div>
@@ -383,7 +387,7 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <motion.div variants={fadeInUpAny} className="bg-white/80 backdrop-blur-md p-10 md:p-14 rounded-[40px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white/50 hover:-translate-y-2 hover:shadow-xl transition-all duration-300">
+          <motion.div variants={fadeInUpAny} className="bg-white/80 backdrop-blur-md p-10 md:p-14 rounded-[40px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white/50">
             <div className="w-20 h-20 rounded-[28px] bg-[#6BCB77]/10 text-[#6BCB77] flex items-center justify-center mb-8">
               <Ear className="w-10 h-10" />
             </div>
@@ -427,10 +431,9 @@ export default function Home() {
               </p>
 
               <motion.div
-                whileHover={{ scale: 1.02, y: -5 }}
-                className="bg-white/80 backdrop-blur-md p-8 rounded-[32px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white/50 flex flex-col sm:flex-row gap-6 items-start relative overflow-hidden group cursor-default transition-all duration-300"
+                className="bg-white/80 backdrop-blur-md p-8 rounded-[32px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white/50 flex flex-col sm:flex-row gap-6 items-start relative overflow-hidden group cursor-default"
               >
-                <div className="absolute top-0 right-0 w-24 h-24 bg-[#FF7B7B]/5 rounded-bl-[60px] transition-transform group-hover:scale-125" />
+                <div className="absolute top-0 right-0 w-24 h-24 bg-[#FF7B7B]/5 rounded-bl-[60px]" />
                 <div className="w-14 h-14 bg-[#FF7B7B]/10 text-[#FF7B7B] rounded-full flex items-center justify-center flex-shrink-0 relative z-10">
                   <PlayCircle className="w-8 h-8" />
                 </div>
@@ -456,7 +459,7 @@ export default function Home() {
         variants={fadeInUpAny}
         className="max-w-6xl mx-auto px-6 mb-32"
       >
-        <div className="bg-white/80 backdrop-blur-md rounded-[32px] p-8 md:p-10 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8 border border-[#5BA4E6]/20 shadow-[0_8px_30px_rgb(0,0,0,0.04)] text-center md:text-left hover:-translate-y-1 transition-all duration-300">
+        <div className="bg-white/80 backdrop-blur-md rounded-[32px] p-8 md:p-10 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8 border border-[#5BA4E6]/20 shadow-[0_8px_30px_rgb(0,0,0,0.04)] text-center md:text-left">
           <div className="w-16 h-16 bg-[#F0F4FF] rounded-full flex items-center justify-center shadow-sm text-[#5BA4E6] flex-shrink-0">
             <Users className="w-8 h-8" />
           </div>
