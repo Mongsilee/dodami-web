@@ -31,6 +31,9 @@ export default function GlobalHeader() {
           <Link href="/team" className={`transition-colors hover:text-[#5BA4E6] ${pathname === '/team' ? 'text-[#5BA4E6] font-bold' : 'text-slate-600'}`}>
             팀 소개
           </Link>
+          <Link href="/magazine" className={`transition-colors hover:text-[#5BA4E6] ${pathname === '/magazine' ? 'text-[#5BA4E6] font-bold' : 'text-slate-600'}`}>
+            도담 매거진
+          </Link>
         </nav>
 
         <Link 

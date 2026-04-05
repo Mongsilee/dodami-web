@@ -20,7 +20,10 @@ import {
   Wind,
   Sprout,
   CheckCircle,
-  X
+  X,
+  MessageCircle,
+  Bot,
+  ChevronDown
 } from 'lucide-react';
 
 const MASCOTS = [
@@ -58,10 +61,32 @@ const MASCOTS = [
   }
 ];
 
+// NEW: FAQ 데이터
+const FAQS = [
+  {
+    question: "몇 살 아이들에게 가장 추천하나요?",
+    answer: "도담이는 4세부터 9세 아이들에게 가장 적합하게 설계되었습니다. 아직 한글을 떼지 못한 아이라도 목소리로 자연스럽게 대화할 수 있어, 언어 발달과 상상력 자극에 큰 도움을 줍니다."
+  },
+  {
+    question: "아이가 낯을 가려서 말을 잘 안 하려고 하면 어쩌죠?",
+    answer: "걱정하지 마세요! 도담이는 재촉하지 않고 기다려주는 다정한 친구입니다. 아이가 좋아하는 주제(공룡, 자동차, 우주 등)를 미리 설정해 주시면, 도담이가 먼저 아이의 관심사로 재미있게 말을 건넵니다."
+  },
+  {
+    question: "사전 체험 후 자동으로 결제가 되나요?",
+    answer: "아니요, 100% 안심하셔도 됩니다! 사전 체험은 신용카드 등록 없이 이름과 이메일만으로 시작됩니다. 아이의 놀라운 변화를 직접 확인하신 후에, 부모님께서 원하실 때만 정규 학습으로 전환하실 수 있습니다."
+  }
+];
+
 export default function Home() {
   const [selectedMascot, setSelectedMascot] = useState<typeof MASCOTS[0] | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [openFaq, setOpenFaq] = useState<number | null>(null); // FAQ 열림 상태 관리
+
   const openModal = () => setIsModalOpen(true);
+
+  const toggleFaq = (index: number) => {
+    setOpenFaq(openFaq === index ? null : index);
+  };
 
   const fadeInUp = {
     hidden: { opacity: 0, y: 40 },
@@ -106,7 +131,6 @@ export default function Home() {
           <span className="font-extrabold text-slate-700">1:1 AI 튜터 도담이</span>입니다.
         </p>
 
-        {/* Action Button: 클릭 가능한 진짜 버튼이므로 호버 유지 */}
         <button
           onClick={openModal}
           className="group relative overflow-hidden rounded-[32px] bg-[#FF7B7B] px-10 py-5 text-xl font-bold text-white shadow-lg shadow-[#FF7B7B]/30 transition-all duration-300 hover:scale-105 hover:-translate-y-1 active:scale-95 hover:shadow-xl hover:shadow-[#FF7B7B]/40 focus:outline-none flex items-center gap-3"
@@ -132,7 +156,6 @@ export default function Home() {
           <p className="mt-4 text-xl text-slate-600 font-medium">아이와 함께 이야기를 나눌 다정한 튜터를 만나보세요!</p>
         </motion.div>
 
-        {/* Mascot Cards: 상호작용(클릭)이 가능하므로 호버 애니메이션 유지 */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full mb-16">
           {MASCOTS.map((mascot) => (
             <motion.div
@@ -179,7 +202,6 @@ export default function Home() {
               <div className="absolute -top-10 -left-10 w-40 h-40 bg-[#FFF8F0] rounded-full blur-3xl opacity-50" />
               <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-[#F0F4FF] rounded-full blur-3xl opacity-50" />
 
-              {/* 말풍선과 캐릭터 레이아웃 개선: 유연한 폭과 안정적인 여백 적용 */}
               <div className="relative mb-10 mt-2 flex flex-col items-center z-10">
                 <div className="bg-slate-800 text-white px-8 py-5 rounded-[32px] rounded-br-[8px] font-bold text-lg md:text-xl shadow-xl mb-6 max-w-sm w-fit relative">
                   "안녕! 나는 {selectedMascot.name}야. <br />나랑 같이 생각 놀이 하러 갈까?"
@@ -196,7 +218,6 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Action Button: 클릭 가능한 진짜 버튼이므로 호버 유지 */}
               <Link href={`/demo?character=${selectedMascot.name}`} className="z-10">
                 <button className="group relative overflow-hidden rounded-full bg-gradient-to-r from-[#5BA4E6] to-[#4589C7] px-10 py-5 text-xl font-bold text-white shadow-lg shadow-[#5BA4E6]/30 transition-all duration-300 hover:scale-105 hover:-translate-y-1 active:scale-95 hover:shadow-xl focus:outline-none flex items-center gap-2">
                   <Sparkles className="w-5 h-5" />
@@ -224,7 +245,6 @@ export default function Home() {
           <p className="mt-4 text-xl text-slate-600 font-medium">건강하게 자라나는 우리 아이의 생각 근육</p>
         </motion.div>
 
-        {/* 정보성 카드이므로 불필요한 hover 트랜지션(이동/크기변환) 모두 제거 */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           <motion.div variants={fadeInUpAny} className="p-8 rounded-[32px] bg-white/80 backdrop-blur-md border border-white/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
             <div className="w-14 h-14 bg-blue-100 text-blue-500 rounded-2xl flex items-center justify-center mb-6">
@@ -274,7 +294,7 @@ export default function Home() {
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
         variants={staggerChildrenAny}
-        className="max-w-4xl mx-auto px-6 mb-32"
+        className="max-w-4xl mx-auto px-6 mb-16"
       >
         <motion.div variants={fadeInUpAny} className="text-center mb-12">
           <h2 className="text-4xl font-extrabold text-slate-800 tracking-tight">
@@ -282,7 +302,6 @@ export default function Home() {
           </h2>
         </motion.div>
 
-        {/* 정보성 카드이므로 hover시 이동 효과 제거 */}
         <div className="flex flex-col gap-6">
           <motion.div variants={fadeInUpAny} className="bg-white/80 backdrop-blur-md p-6 md:p-8 rounded-[32px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white/50 flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-12 relative overflow-hidden">
             <div className="absolute left-0 top-0 h-full w-2 bg-slate-200" />
@@ -319,6 +338,55 @@ export default function Home() {
               <p className="text-2xl text-slate-800 font-extrabold">도담이는 <span className="text-[#10A37F]">질문</span>합니다.</p>
             </div>
           </motion.div>
+        </div>
+      </motion.section>
+
+      {/* NEW: 대화 예시 (Sneak Peek) Section */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={fadeInUpAny}
+        className="max-w-4xl mx-auto px-6 mb-32"
+      >
+        <div className="bg-slate-800 p-8 md:p-12 rounded-[40px] shadow-2xl relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-[#5BA4E6]/10 to-transparent rounded-bl-full pointer-events-none" />
+
+          <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-4 text-center tracking-tight">
+            단순한 대화가 아닌, <span className="text-[#5BA4E6]">생각이 자라나는 대화</span>
+          </h3>
+          <p className="text-slate-400 text-center mb-10 font-medium">같은 질문에도 어떻게 대답하느냐가 아이의 사고력을 결정합니다.</p>
+
+          <div className="space-y-8 relative z-10">
+            {/* Child's Question */}
+            <div className="flex justify-end">
+              <div className="bg-white text-slate-800 px-6 py-4 rounded-[24px] rounded-br-none font-bold shadow-sm max-w-[80%] md:max-w-[60%]">
+                "하늘은 왜 파래?"
+              </div>
+            </div>
+
+            {/* ChatGPT Response */}
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 rounded-full bg-slate-700 flex items-center justify-center flex-shrink-0">
+                <Bot className="w-5 h-5 text-slate-400" />
+              </div>
+              <div className="bg-slate-700 text-slate-300 px-6 py-4 rounded-[24px] rounded-bl-none shadow-sm max-w-[85%] md:max-w-[70%]">
+                <p className="text-xs font-bold text-slate-400 mb-1">일반적인 AI (정답 제시)</p>
+                <p className="leading-relaxed">하늘이 파란 이유는 빛의 산란 현상 때문입니다. 태양빛이 지구의 대기를 통과할 때, 파장이 짧은 파란색 빛이 공기 분자와 부딪혀...</p>
+              </div>
+            </div>
+
+            {/* Dodami Response */}
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 rounded-full bg-[#5BA4E6]/20 flex items-center justify-center flex-shrink-0 border border-[#5BA4E6]/30">
+                <Smile className="w-6 h-6 text-[#5BA4E6]" />
+              </div>
+              <div className="bg-gradient-to-br from-[#F0F4FF] to-white text-slate-800 px-6 py-5 rounded-[24px] rounded-bl-none shadow-md border border-[#5BA4E6]/20 max-w-[85%] md:max-w-[70%] relative">
+                <p className="text-xs font-extrabold text-[#5BA4E6] mb-1">도담이 (생각 유도)</p>
+                <p className="font-bold leading-relaxed">"우와, 진짜 오늘 하늘이 파랗네! 우리 지민이는 하늘에 무슨 색 물감을 푼 것 같아? 같이 상상해 볼까?"</p>
+              </div>
+            </div>
+          </div>
         </div>
       </motion.section>
 
@@ -376,7 +444,6 @@ export default function Home() {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-          {/* 정보성 카드이므로 hover시 이동 효과 제거 */}
           <motion.div variants={fadeInUpAny} className="bg-white/80 backdrop-blur-md p-10 md:p-14 rounded-[40px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white/50">
             <div className="w-20 h-20 rounded-[28px] bg-[#FF7B7B]/10 text-[#FF7B7B] flex items-center justify-center mb-8">
               <Smile className="w-10 h-10" />
@@ -467,6 +534,49 @@ export default function Home() {
             <span className="font-extrabold text-[#5BA4E6]">음성 AI 최고 권위자이자 전 삼성전자 최연소 부사장,</span><br className="hidden lg:block" />
             현 고려대학교 인공지능학과 <span className="font-extrabold text-slate-800">김찬우 교수님</span>의 기술 자문을 받으며 <br className="hidden lg:block" />한국 아동에 최적화된 감정 인식(SER) 기술을 공동 연구하고 있습니다.
           </p>
+        </div>
+      </motion.section>
+
+      {/* NEW: FAQ Section */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-50px" }}
+        variants={fadeInUpAny}
+        className="max-w-4xl mx-auto px-6 mb-32"
+      >
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-extrabold text-slate-800 tracking-tight">자주 묻는 질문</h2>
+        </div>
+        <div className="space-y-4">
+          {FAQS.map((faq, index) => (
+            <div
+              key={index}
+              className="bg-white/80 backdrop-blur-md border border-white/50 shadow-sm rounded-[24px] overflow-hidden transition-all duration-300 hover:shadow-md cursor-pointer"
+              onClick={() => toggleFaq(index)}
+            >
+              <div className="p-6 flex items-center justify-between">
+                <h3 className="text-xl font-bold text-slate-800">{faq.question}</h3>
+                <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors ${openFaq === index ? 'bg-[#5BA4E6] text-white' : 'bg-slate-100 text-slate-400'}`}>
+                  {openFaq === index ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
+                </div>
+              </div>
+              <AnimatePresence>
+                {openFaq === index && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    className="px-6 pb-6"
+                  >
+                    <p className="text-lg text-slate-600 font-medium leading-relaxed border-t border-slate-100 pt-4">
+                      {faq.answer}
+                    </p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          ))}
         </div>
       </motion.section>
 
