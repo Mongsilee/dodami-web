@@ -11,12 +11,11 @@ export default function TeamPage() {
   const teamMembers: TeamMember[] = [
     {
       name: "정연우 (William Chung)",
-      role: "Founder & CEO",
+      role: "CEO",
       image: "/images/Will.jpeg", // <--- 윌리엄 대표님 사진 경로 추가 완료!
       quote: "답을 가르치기보다 생각하는 법을 고민합니다.",
       details: [
-        "Princeton University Computer Science",
-        "전 BCG·Deloitte 컨설턴트",
+        "학사: Princeton University(Computer Science)",
         "도담이 전체 기술 스택 독자 구축"
       ]
     },
@@ -26,9 +25,11 @@ export default function TeamPage() {
       quote: "기술로 교육의 격차를 해소합니다.",
       image: "/images/Chan.jpeg",
       details: [
-        "한국 대표 에드테크 '아이스크림에듀' 3년 개발 경력",
-        "서울대 석사 및 서강대 박사과정(SCI 논문 2편)",
-        "STT/TTS/LLM 기술 전문가"
+        "학사: University of Wisconsin-Madison (Computer Science)",
+        "석사: 서울대학교(산업공학과)",
+        "박사: 서강대학교(가상융합전문대) 재학 중",
+        "前 PwC AI 컨설턴트",
+        "前 한국 대표 Edu Tech 기업 아이스크림에듀 AI연구실 개발자",
       ]
     },
     {
@@ -36,8 +37,8 @@ export default function TeamPage() {
       role: "기술 자문위원",
       quote: "아동 음성 AI 기술의 새로운 지평을 함께 엽니다.",
       details: [
-        "현 고려대학교 인공지능학과 교수",
-        "전 삼성전자 최연소 부사장(빅스비 창시자)",
+        "現 고려대학교 인공지능학과 교수",
+        "前 삼성전자 최연소 부사장(빅스비 창시자)",
         "Google·Microsoft 출신 음성 AI 권위자"
       ]
     }
