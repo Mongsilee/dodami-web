@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';  // 👈 이 줄을 추가해 주세요!
 import GlobalHeader from '@/components/GlobalHeader';
 import SubscribeModal from '@/components/SubscribeModal';
 import { Quote, Sparkles, ArrowRight, Heart } from 'lucide-react';
