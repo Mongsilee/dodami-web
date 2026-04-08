@@ -19,7 +19,7 @@ export default function TeamPage() {
       image: "/images/Will.jpeg",
       quote: "지식을 넘어, 스스로 생각하는 힘을 설계합니다.",
       details: [
-        "학사: Princeton University (Computer Science)",
+        "프린스턴 대학교(Computer Science) 학사",
         "도담이 전체 기술 스택 독자 구축"
       ]
     },
@@ -29,9 +29,7 @@ export default function TeamPage() {
       quote: "차가운 AI 기술에 다정한 선생님의 마음을 담습니다.",
       image: "/images/Chan.jpeg",
       details: [
-        "학사: University of Wisconsin-Madison (Computer Science)",
-        "석사: 서울대학교 (산업공학과)",
-        "박사: 서강대학교 (가상융합테크놀로지) 재학 중",
+        "위스콘신 매디슨대(CS) 학사, 서울대(산업공학) 석사, 現 서강대(가상융합) 박사과정 연구 중",
         "前 PwC AI 컨설턴트",
         "前 아이스크림에듀 AI연구실 데이터 엔지니어",
       ]
@@ -211,6 +209,26 @@ export default function TeamPage() {
         </motion.div>
 
       </main>
+
+      {/* Footer */}
+      <footer className="w-full max-w-6xl mx-auto px-6 border-t border-slate-200/60 pt-10 pb-6 mt-20">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="text-2xl font-bold text-slate-300 tracking-tight flex items-center gap-2">
+            <Sparkles className="w-5 h-5" />
+            도담이
+          </div>
+          <div className="flex gap-6 text-sm font-medium text-slate-400">
+            <Link href="/" className="hover:text-slate-600 transition-colors">홈으로</Link>
+            <Link href="/team" className="hover:text-slate-600 transition-colors font-bold">팀 소개</Link>
+            <Link href="#" className="hover:text-slate-600 transition-colors">이용약관</Link>
+            <Link href="#" className="hover:text-slate-600 transition-colors">개인정보처리방침</Link>
+          </div>
+          <div className="text-sm text-slate-400 font-medium">
+            &copy; {new Date().getFullYear()} Dodami Inc.
+          </div>
+        </div>
+      </footer>
+
     </div>
   );
 }
