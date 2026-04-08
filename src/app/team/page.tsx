@@ -25,7 +25,7 @@ export default function TeamPage() {
     },
     {
       name: "윤찬혁",
-      role: "Co-founderr, CTO",
+      role: "Co-founder, CTO",
       quote: "차가운 AI 기술에 다정한 선생님의 마음을 담습니다.",
       image: "/images/Chan.jpeg",
       details: [
