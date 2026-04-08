@@ -23,7 +23,8 @@ import {
   X,
   MessageCircle,
   Bot,
-  ChevronDown
+  ChevronDown,
+  ChevronUp
 } from 'lucide-react';
 
 const MASCOTS = [
