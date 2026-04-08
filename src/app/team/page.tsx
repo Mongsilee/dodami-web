@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import Link from 'next/link';  // 👈 이 줄을 추가해 주세요!
+import Link from 'next/link';
 import GlobalHeader from '@/components/GlobalHeader';
 import SubscribeModal from '@/components/SubscribeModal';
 import { Quote, Sparkles, ArrowRight, Heart } from 'lucide-react';
@@ -20,8 +20,8 @@ export default function TeamPage() {
       image: "/images/Will.jpeg",
       quote: "지식을 넘어, 스스로 생각하는 힘을 설계합니다.",
       details: [
-        "프린스턴 대학교(Computer Science) 학사",
-        "도담이 전체 기술 스택 독자 구축"
+        "도담이 전체 기술 스택 독자 구축",
+        "프린스턴 대학교(Computer Science) 학사"
       ]
     },
     {
@@ -30,9 +30,11 @@ export default function TeamPage() {
       quote: "차가운 AI 기술에 다정한 선생님의 마음을 담습니다.",
       image: "/images/Chan.jpeg",
       details: [
-        "위스콘신 매디슨대(CS) 학사, 서울대(산업공학) 석사, 現 서강대(가상융합) 박사과정 연구 중",
         "前 PwC AI 컨설턴트",
         "前 아이스크림에듀 AI연구실 데이터 엔지니어",
+        "서강대(가상융합) 박사과정 연구 중",
+        "서울대(산업공학) 석사",
+        "위스콘신 매디슨대(CS) 학사"
       ]
     },
     {
